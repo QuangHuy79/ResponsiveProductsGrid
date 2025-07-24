@@ -4,7 +4,7 @@
   object-fit: contain;
 }
 .btn {
-  min-width: 120px;
+  /* min-width: 120px; */
 }
 
 .product-description {

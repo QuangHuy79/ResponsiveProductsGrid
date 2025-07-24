@@ -1,0 +1,75 @@
+/* Scale nhẹ khi hover */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Màu cam khi hover */
+.hover-orange {
+  transition: color 0.3s ease;
+}
+.hover-orange:hover {
+  color: #fd7e14; /* Bootstrap orange */
+}
+
+/* Chuyển nền cam nhạt khi hover */
+.bg-hover-orange:hover {
+  background-color: #fff3e0 !important; /* Cam nhạt */
+  transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng input focus như Tailwind */
+.input-focus-outline:focus {
+  border-color: #fd7e14;
+  box-shadow: 0 0 0 0.2rem rgba(253, 126, 20, 0.25);
+  transition: all 0.3s ease;
+}
+
+/* Badge nhấp nháy */
+.badge-pulse {
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Nền cam nhạt khi click (active) */
+.btn-press:active {
+  background-color: #ffe5b4 !important; /* màu cam nhạt */
+  transition: background-color 0.1s ease;
+}
+/* Ép placeholder hiển thị rõ ràng */
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1; /* Bắt buộc */
+  text-transform: none;
+  font-style: normal;
+}
+.bg-dark.text-white.form-control {
+  background-color: #212529 !important; /* màu bg-dark trong Bootstrap */
+  color: #fff !important;
+}
+.newsletter-input {
+  background-color: #212529 !important;
+  color: #ffffff !important;
+  border: 2px solid #fd7e14 !important; /* ✅ viền cam, dày hơn mặc định */
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
