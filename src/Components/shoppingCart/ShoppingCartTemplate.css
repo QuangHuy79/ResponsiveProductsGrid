@@ -1,0 +1,31 @@
+.shopping-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1055;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  overflow-y: auto;
+}
+
+.shopping-cart-panel {
+  width: 90%;
+  max-width: 1100px;
+  background-color: #fff;
+  border-radius: 12px;
+  z-index: 1060;
+}
+
+.shopping-cart-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}

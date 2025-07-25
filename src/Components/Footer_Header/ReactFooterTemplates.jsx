@@ -83,17 +83,6 @@ const ReactFooterTemplates = () => {
               </button>
             </div>
           </div>
-          {/* <div className="col-12 col-sm-6 col-lg-3 hover-scale">
-            <h5 className="text-warning mb-3">Newsletter</h5>
-            <div className="d-grid gap-3">
-              <input
-                type="email"
-                className="form-control input-focus-outline bg-dark text-white border-secondary"
-                placeholder="Enter your email"
-              />
-              <button className="btn btn-warning hover-scale">Subscribe</button>
-            </div>
-          </div> */}
         </div>
 
         {/* Bottom bar */}
