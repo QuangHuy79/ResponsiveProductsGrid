@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1055;
+  z-index: 1050;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -10,6 +10,8 @@
   align-items: flex-start;
   padding-top: 60px;
   overflow-y: auto;
+  /* CHÍNH LÀ DÒNG NÀY */
+  background-color: rgba(0, 0, 0, 0.5); /* nền đen mờ */
 }
 
 .shopping-cart-panel {
@@ -27,5 +29,13 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1050;
+  z-index: 1040;
+}
+
+.shopping-cart-content {
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 1100px;
+  width: 90%;
+  z-index: 1060; /* luôn nằm trên overlay */
 }
