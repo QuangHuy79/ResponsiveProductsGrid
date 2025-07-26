@@ -39,9 +39,13 @@ function App() {
       <BrowserRouter>
         <ReactHeaderTemplates />
         <Routes>
+          {/* Nơi định nghĩa các trang cụ thể theo URL */}
           <Route path="/" element={<ResponsiveProductsGrid />} />
+          {/* Trang chính hiển thị danh sách sản phẩm */}
           <Route path="/product/:id" element={<ProductDetail />} />
+          {/* Trang chi tiết từng sản phẩm */}
           <Route path="*" element={<Navigate to="/" />} />
+          {/* Trang chi tiết từng sản phẩm */}
         </Routes>
         <ReactFooterTemplates />
         <ShoppingCartTemplate />

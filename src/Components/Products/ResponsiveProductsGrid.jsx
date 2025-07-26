@@ -43,7 +43,7 @@ function ResponsiveProductsGrid() {
       <h2 className="text-center mb-4">Our Products</h2>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {products.map((product) => (
-          <div
+          <div // 👈 THÊM
             key={product.id}
             onClick={() => handleProductClick(product)}
             style={{ cursor: "pointer" }}

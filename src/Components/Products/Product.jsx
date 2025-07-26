@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Product(props) {
-  const { title, price, description, image } = props;
+  const { title, price, description, image, id } = props;
+  // Thêm
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <div className="col">
       <div className="card shadow-sm d-flex flex-column product-card">
@@ -9,7 +17,12 @@ function Product(props) {
           src={image}
           className="card-img-top"
           alt={title}
-          style={{ height: "200px", objectFit: "contain" }}
+          style={{ height: "200px", objectFit: "contain", cursor: "pointer" }}
+          onClick={handleClick}
+          // src={image}
+          // className="card-img-top"
+          // alt={title}
+          // style={{ height: "200px", objectFit: "contain" }}
         />
         <div className="card-body d-flex flex-column">
           <div className="product-description">
