@@ -15,7 +15,7 @@ function ShoppingCartTemplate() {
 
   return (
     <div
-      className="shopping-cart-overlay"
+      className="shopping-cart-overlay shopping-cart-backdrop"
       onClick={closeCart} // Khi click ra ngoài sẽ đóng cart
     >
       <div

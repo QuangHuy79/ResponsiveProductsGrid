@@ -5,6 +5,7 @@ import CardTypeSelector from "./CardTypeSelector";
 import { calculateOrder } from "./orderUtils";
 import { Formik, Form } from "formik";
 import FormikWrapper from "./FormikWrapper";
+import Image01 from "../../assets/Image01.jpg";
 
 function CardDetails({ initialValues, validationSchema, onSubmit }) {
   return (
@@ -13,7 +14,7 @@ function CardDetails({ initialValues, validationSchema, onSubmit }) {
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h5 className="mb-0">Card details</h5>
           <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+            src={Image01}
             className="img-fluid rounded-3"
             style={{ width: 45 }}
             alt="Avatar"

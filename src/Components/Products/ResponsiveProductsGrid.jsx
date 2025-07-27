@@ -40,7 +40,7 @@ function ResponsiveProductsGrid() {
   // }, []);
   return (
     <div className="container py-5">
-      <h2 className="text-center mb-4">Our Products</h2>
+      <h2 className="text-center mb-4">All Our Products</h2>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {products.map((product) => (
           <div // 👈 THÊM
@@ -59,24 +59,6 @@ function ResponsiveProductsGrid() {
         ))}
       </div>
     </div>
-    // <div>
-    //   <>
-    //     <div className="container py-5">
-    //       <h2 className="text-center mb-4">Our Products</h2>
-    //       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-    //         {products.map((product) => (
-    //           <Product
-    //             key={product.id}
-    //             image={product.image}
-    //             title={product.title}
-    //             price={product.price}
-    //             description={product.description}
-    //           />
-    //         ))}
-    //       </div>
-    //     </div>
-    //   </>
-    // </div>
   );
 }
 

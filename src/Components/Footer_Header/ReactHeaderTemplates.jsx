@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
+import Image01 from "../../assets/Image01.jpg";
 import {
   FaSearch,
   FaShoppingCart,
@@ -14,29 +15,24 @@ const ReactHeaderTemplates = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartCount] = useState(3);
 
-  const menuCategories = [
-    "Appetizers",
-    "Main Courses",
-    "Desserts",
-    "Beverages",
-  ];
+  const menuCategories = ["Men", "Jewelry", "Electronics", "Women"];
 
   return (
     <header className="bg-white shadow sticky-top z-50">
       <nav className="container-fluid py-3">
         <div className="container d-flex align-items-center justify-content-between">
+          {/* Logo và tên website */}
           <div className="d-flex align-items-center gap-3">
             <img
-              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
+              src={Image01}
               alt="Restaurant Logo"
               className="rounded-circle object-fit-cover"
               style={{ height: "48px", width: "48px" }}
             />
-            <span className="fs-4 fw-bold text-warning hover-scale">
-              FoodieSpot
-            </span>
+            <span className="fs-4 fw-bold text-warning hover-scale">MyWeb</span>
           </div>
 
+          {/* Menu cho màn hình lớn (desktop) */}
           <div className="d-none d-lg-flex gap-4">
             {menuCategories.map((category) => (
               <button
@@ -48,7 +44,9 @@ const ReactHeaderTemplates = () => {
             ))}
           </div>
 
+          {/* Các icon bên phải: tìm kiếm, giỏ hàng, người dùng (desktop) */}
           <div className="d-none d-lg-flex align-items-center gap-3">
+            {/* Ô tìm kiếm */}
             <div className="position-relative">
               <input
                 type="text"
@@ -59,6 +57,7 @@ const ReactHeaderTemplates = () => {
               <FaSearch className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" />
             </div>
 
+            {/* Icon giỏ hàng trên desktop – có badge đếm sản phẩm */}
             <div
               onClick={openCart}
               className="position-relative"
@@ -70,19 +69,26 @@ const ReactHeaderTemplates = () => {
               </span>
             </div>
 
-            <div>
-              <FaUser
-                className="fs-5 text-secondary hover-orange"
-                style={{ cursor: "pointer" }}
-              />
+            {/* Icon người dùng trên desktop */}
+            <div style={{ cursor: "pointer" }}>
+              <FaUser className="fs-5 text-secondary hover-orange" />
             </div>
           </div>
 
+          {/* Các icon đơn giản cho mobile (ẩn menu chi tiết) */}
           <div className="d-flex d-lg-none align-items-center gap-3 ms-auto">
-            <FaShoppingCart className="fs-5 text-secondary hover-orange" />
-            <FaUser className="fs-5 text-secondary hover-orange" />
+            {/* Giỏ hàng trên mobile – thêm onClick nếu muốn mở giỏ */}
+            <div onClick={openCart} style={{ cursor: "pointer" }}>
+              <FaShoppingCart className="fs-5 text-secondary hover-orange" />
+            </div>
+
+            {/* Người dùng trên mobile – chưa gắn sự kiện */}
+            <div style={{ cursor: "pointer" }}>
+              <FaUser className="fs-5 text-secondary hover-orange" />
+            </div>
           </div>
 
+          {/* Nút toggle menu (bars hoặc close) cho mobile */}
           <button
             className="d-lg-none btn fs-4 ms-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -91,6 +97,7 @@ const ReactHeaderTemplates = () => {
           </button>
         </div>
 
+        {/* Menu thả xuống trên mobile nếu được bật */}
         {isMenuOpen && (
           <div className="d-lg-none mt-3">
             {menuCategories.map((category) => (
