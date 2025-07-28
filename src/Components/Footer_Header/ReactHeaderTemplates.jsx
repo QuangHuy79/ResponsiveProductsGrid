@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // thêm dòng này ở đầu
 import { useCart } from "../context/CartContext";
 import Image01 from "../../assets/Image01.jpg";
 import {
@@ -11,21 +12,43 @@ import {
 import "./ReactHeaderTemplates.css";
 
 const ReactHeaderTemplates = () => {
+  const navigate = useNavigate(); // thêm dòng này trong component
   const { openCart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartCount] = useState(3);
 
-  const menuCategories = ["Men", "Jewelry", "Electronics", "Women"];
+  const handleCategoryClick = (value) => {
+    if (!value) {
+      navigate("/"); // 👈 nếu là All Products thì quay về trang gốc
+    } else {
+      navigate(`/?category=${encodeURIComponent(value)}`);
+    }
+    // navigate(`/?category=${encodeURIComponent(value)}`);
+  };
+  // ***** Đã phân trang *****
+  const menuCategories = [
+    { label: "All Products", value: "" }, // 👈 giá trị rỗng để quay về trang chủ
+    { label: "Men", value: "men's clothing" },
+    { label: "Women", value: "women's clothing" },
+    { label: "Jewelry", value: "jewelery" },
+    { label: "Electronics", value: "electronics" },
+  ];
+  // ***** Chưa phân trang *****
+  // const menuCategories = ["Men", "Jewelry", "Electronics", "Women"];
 
   return (
     <header className="bg-white shadow sticky-top z-50">
       <nav className="container-fluid py-3">
         <div className="container d-flex align-items-center justify-content-between">
           {/* Logo và tên website */}
-          <div className="d-flex align-items-center gap-3">
+          <div
+            className="d-flex align-items-center gap-3"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")} // 👈 chuyển về trang chủ
+          >
             <img
               src={Image01}
-              alt="Restaurant Logo"
+              alt="Logo"
               className="rounded-circle object-fit-cover"
               style={{ height: "48px", width: "48px" }}
             />
@@ -34,14 +57,25 @@ const ReactHeaderTemplates = () => {
 
           {/* Menu cho màn hình lớn (desktop) */}
           <div className="d-none d-lg-flex gap-4">
+            {/* ***** Đã phân trang ***** */}
             {menuCategories.map((category) => (
               <button
-                key={category}
+                key={category.value}
                 className="btn btn-link text-secondary btn-press hover-orange"
+                onClick={() => handleCategoryClick(category.value)}
               >
-                {category}
+                {category.label}
               </button>
             ))}
+            {/* ***** Chưa phân trang ***** */}
+            {/* {menuCategories.map((category) => (
+              // <button
+              //   key={category}
+              //   className="btn btn-link text-secondary btn-press hover-orange"
+              // >
+              //   {category}
+              // </button>
+            ))} */}
           </div>
 
           {/* Các icon bên phải: tìm kiếm, giỏ hàng, người dùng (desktop) */}
@@ -100,14 +134,28 @@ const ReactHeaderTemplates = () => {
         {/* Menu thả xuống trên mobile nếu được bật */}
         {isMenuOpen && (
           <div className="d-lg-none mt-3">
+            {/* ***** Đã phân trang ***** */}
             {menuCategories.map((category) => (
               <button
-                key={category}
+                key={category.value}
                 className="btn w-100 text-start mb-2 bg-hover-orange"
+                onClick={() => {
+                  handleCategoryClick(category.value);
+                  setIsMenuOpen(false);
+                }}
               >
-                {category}
+                {category.label}
               </button>
             ))}
+            {/* ***** Chưa phân trang ***** */}
+            {/* {menuCategories.map((category) => (
+              // <button
+              //   key={category}
+              //   className="btn w-100 text-start mb-2 bg-hover-orange"
+              // >
+              //   {category}
+              // </button>
+            ))} */}
           </div>
         )}
       </nav>

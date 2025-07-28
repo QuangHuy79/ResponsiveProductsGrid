@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ProductDetail() {
-  // const location = useLocation();
-  // const product = location.state;
-  // const navigate = useNavigate();
-
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -19,7 +14,6 @@ function ProductDetail() {
       .catch((err) => console.error("Lỗi khi gọi API chi tiết:", err));
   }, [id]);
 
-  // if (!product) return <p>Không tìm thấy sản phẩm.</p>;
   if (!product) return <p>Đang tải...</p>;
 
   return (
