@@ -1,0 +1,29 @@
+.card-img-top {
+  max-height: 200px;
+  width: 100%;
+  object-fit: contain;
+}
+.btn {
+  /* min-width: 120px; */
+}
+
+.product-description {
+  max-height: 100px;
+  overflow-y: auto;
+  padding-right: 4px; /* tránh che chữ bởi scrollbar */
+}
+
+/* Tùy chọn: ẩn thanh cuộn trên Webkit (Chrome/Safari) nếu muốn */
+.product-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.product-description::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.product-card {
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+}

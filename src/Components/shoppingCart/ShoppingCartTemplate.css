@@ -1,0 +1,38 @@
+/* Nền đen mờ */
+.shopping-cart-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Chính lớp mờ này */
+  z-index: 1040;
+}
+
+/* Bao ngoài giỏ hàng */
+.shopping-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+/* Nội dung giỏ hàng */
+.shopping-cart-content {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1100px;
+  z-index: 1060;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
