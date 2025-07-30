@@ -137,6 +137,8 @@
 
 // export default ResponsiveProductsGrid;
 
+// ***** Thêm dữ liệu động từ Api *****
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom"; // 👈 THÊM
 import Pagination from "./Pagination";
@@ -157,7 +159,7 @@ function ResponsiveProductsGrid() {
   const page = parseInt(searchParams.get("page")) || 1;
   const [totalItems, setTotalItems] = useState(0);
   // ***** Hàm này để phân trang 4 sản phẩm/Trang *****
-    useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         let res;
@@ -188,14 +190,14 @@ function ResponsiveProductsGrid() {
     fetchData();
   }, [category, page]);
 
-  const handleProductClick = (product) => {
-    navigate(`/product/${product.id}`, { state: product }); // 👈 Chuyển trang + truyền dữ liệu
-  };
+  // const handleProductClick = (product) => {
+  //   navigate(`/product/${product.id}`, { state: product }); // 👈 Chuyển trang + truyền dữ liệu
+  // };
 
   return (
     <div className="container py-5">
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {products.map((product) => (
+        {/* {products.map((product) => (
           <div
             key={product.id} // 👈 THÊM
             onClick={() => handleProductClick(product)}
@@ -209,6 +211,16 @@ function ResponsiveProductsGrid() {
               description={product.description}
             />
           </div>
+        ))} */}
+        {products.map((product) => (
+          <Product
+            key={product.id}
+            id={product.id}
+            image={product.image}
+            title={product.title}
+            price={product.price}
+            description={product.description}
+          />
         ))}
       </div>
       {/* ***** Phân trang 4 sản phẩm/Trang ***** */}

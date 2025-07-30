@@ -13,10 +13,11 @@ import "./ReactHeaderTemplates.css";
 
 const ReactHeaderTemplates = () => {
   const navigate = useNavigate(); // thêm dòng này trong component
-  const { openCart } = useCart();
+  // const { openCart } = useCart();
+  const { openCart, cartItems } = useCart(); // ✅ thêm cartItems
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount] = useState(3);
-
+  // const [cartCount] = useState();
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const handleCategoryClick = (value) => {
     if (!value) {
       navigate("/"); // 👈 nếu là All Products thì quay về trang gốc
@@ -99,7 +100,8 @@ const ReactHeaderTemplates = () => {
             >
               <FaShoppingCart className="fs-5 text-secondary hover-orange" />
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-white badge-pulse">
-                {cartCount}
+                {/* {cartItems.length} */}
+                {totalItems}
               </span>
             </div>
 
