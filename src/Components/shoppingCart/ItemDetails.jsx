@@ -76,15 +76,6 @@ import React from "react";
 import { useCart } from "../context/CartContext";
 function ItemDetails({ item }) {
   const { removeFromCart, updateQuantity } = useCart();
-  // const [quantity, setQuantity] = useState(item.quantity || 1);
-
-  // const increaseQuantity = () => {
-  //   setQuantity((prev) => prev + 1);
-  // };
-
-  // const decreaseQuantity = () => {
-  //   setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  // };
   const increaseQuantity = () => {
     updateQuantity(item.id, item.quantity + 1);
   };
