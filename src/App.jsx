@@ -32,6 +32,8 @@ import ReactFooterTemplates from "./Components/Footer_Header/ReactFooterTemplate
 import ShoppingCartTemplate from "./Components/shoppingCart/ShoppingCartTemplate";
 import { CartProvider } from "./Components/context/CartContext";
 import ProductDetail from "./Components/ProductDetail/ProductDetail"; // Thêm dòng này
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -49,6 +51,7 @@ function App() {
         </Routes>
         <ReactFooterTemplates />
         <ShoppingCartTemplate />
+        <ToastContainer position="top-right" autoClose={3000} />
       </BrowserRouter>
     </CartProvider>
   );

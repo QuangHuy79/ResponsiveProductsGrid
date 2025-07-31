@@ -1,0 +1,51 @@
+{
+  "orders": [
+    {
+      "id": "f2b2",
+      "cardholderName": "QuangHuy",
+      "cardNumber": "1111222233334444",
+      "exp": "09/2025",
+      "cvv": "123",
+      "shippingMethod": "standard",
+      "cardType": "visa",
+      "cartItems": [
+        {
+          "id": 4,
+          "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+          "title": "Mens Casual Slim Fit",
+          "price": 15.99,
+          "quantity": 2
+        }
+      ],
+      "total": 41.980000000000004,
+      "createdAt": "2025-07-31T08:00:04.103Z"
+    },
+    {
+      "id": "cc59",
+      "cardholderName": "QuangHuy",
+      "cardNumber": "2222333344445555",
+      "exp": "10/2026",
+      "cvv": "321",
+      "shippingMethod": "standard",
+      "cardType": "mastercard",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+          "price": 109.95,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "quantity": 1
+        }
+      ],
+      "total": 142.25,
+      "createdAt": "2025-07-31T08:12:15.441Z"
+    }
+  ]
+}

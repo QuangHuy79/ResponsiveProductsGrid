@@ -103,9 +103,6 @@ function ItemDetails({ item }) {
               </div>
               <div className="ms-3">
                 <h5>{item.title}</h5>
-                {/* <p className="small mb-0">
-                  {item.description || "No description"}
-                </p> */}
                 <p className="small mb-0">{item.description}</p>
               </div>
             </div>

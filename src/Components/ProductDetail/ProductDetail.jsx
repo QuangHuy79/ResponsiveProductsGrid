@@ -64,7 +64,7 @@ function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
-  const { addToCart, openCart } = useCart();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     axios
@@ -99,11 +99,6 @@ function ProductDetail() {
                 <i className="fas fa-long-arrow-alt-left me-2" />
                 Continue Shopping
               </button>
-
-              {/* <button className="btn btn-warning">
-                <i className="bi bi-cart-plus me-2" />
-                Add to Cart
-              </button> */}
               <button
                 className="btn btn-primary mt-3"
                 onClick={() => {
@@ -114,7 +109,6 @@ function ProductDetail() {
                     price: product.price,
                     quantity: 1, // bạn có thể cho chọn sau
                   });
-                  // openCart(); // ⬅️ nếu bạn muốn mở giỏ hàng ngay sau khi thêm
                 }}
               >
                 <i className="bi bi-cart-plus me-2" />

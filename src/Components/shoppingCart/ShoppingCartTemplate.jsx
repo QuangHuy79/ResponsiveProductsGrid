@@ -97,7 +97,6 @@ import "./ShoppingCartTemplate.css";
 import { useNavigate } from "react-router-dom"; // ⬅️ thêm dòng này
 
 function ShoppingCartTemplate() {
-  // const { isCartOpen, closeCart } = useCart();
   const navigate = useNavigate(); // ⬅️ khởi tạo hàm chuyển hướng
   const { isCartOpen, closeCart, cartItems } = useCart(); // 🟢 lấy thêm cartItems
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -147,10 +146,6 @@ function ShoppingCartTemplate() {
                               You have <strong>{totalItems}</strong> item
                               {totalItems !== 1 ? "s" : ""} in your cart
                             </h5>
-                            {/* <p className="mb-0">
-                              You have {cartItems.length} item
-                              {cartItems.length !== 1 ? "s" : ""} in your cart
-                            </p> */}
                           </div>
                           <div>
                             <p className="mb-0">
