@@ -75,14 +75,7 @@ const validationSchema = Yup.object({
     .oneOf(["standard", "express"], "Không hợp lệ"),
 });
 
-// const onSubmit = (values) => {
-//   const { total } = calculateOrder(values);
-//   console.log("Tổng:", total);
-//   console.log("Giá trị form:", values);
-// };
-
 export const formikProps = {
   initialValues,
   validationSchema,
-  // onSubmit,
 };

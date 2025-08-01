@@ -1,56 +1,173 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import FieldInputCardDetails from "./FieldInputCardDetails";
+import CardTypeSelector from "./CardTypeSelector";
+import { calculateOrder } from "./orderUtils";
+import { Formik, Form } from "formik";
+import FormikWrapper from "./FormikWrapper";
+import Image01 from "../../assets/Image01.jpg";
 
-function ProductDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => setProduct(res.data))
-      .catch((err) => console.error("Lỗi khi gọi API chi tiết:", err));
-  }, [id]);
-
-  if (!product) return <p>Đang tải...</p>;
-
+function CardDetails({ initialValues, validationSchema, onSubmit }) {
   return (
-    <div className="container py-5">
-      <h2 className="text-center mb-4">Product Detail</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow p-4">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="img-fluid mb-3"
-            />
-            <h4>{product.title}</h4>
-            <p className="text-muted">{product.description}</p>
-            <h5 className="text-danger">${product.price}</h5>
-
-            {/* 2 nút cùng hàng, căn trái phải */}
-            <div className="d-flex justify-content-between mt-4">
-              <button
-                className="btn btn-outline-info"
-                onClick={() => navigate("/")}
-              >
-                <i className="fas fa-long-arrow-alt-left me-2" />
-                Continue Shopping
-              </button>
-
-              <button className="btn btn-warning">
-                <i className="bi bi-cart-plus me-2" />
-                Add to Cart
-              </button>
-            </div>
-          </div>
+    <div className="card bg-primary text-white rounded-3 w-100">
+      <div className="card-body">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h5 className="mb-0">Card details</h5>
+          <img
+            src={Image01}
+            className="img-fluid rounded-3"
+            style={{ width: 45 }}
+            alt="Avatar"
+          />
         </div>
+
+        <FormikWrapper
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {({ values, errors, touched, handleChange }) => {
+            const { subtotal, shipping, total } = calculateOrder(values);
+
+            return (
+              <Form>
+                <div className="mt-4 text-start">
+                  {/* --- Card Type Icons --- */}
+                  <div className="mb-4 ">
+                    <label htmlFor="cardType" className="form-label text-white">
+                      Card Type
+                    </label>
+                    <select
+                      id="cardType"
+                      name="cardType"
+                      className="form-select"
+                      value={values.cardType}
+                      onChange={handleChange}
+                    >
+                      <option value="">-- Select card type --</option>
+                      <option value="visa">Visa</option>
+                      <option value="mastercard">Mastercard</option>
+                      <option value="amex">American Express</option>
+                      <option value="paypal">Paypal</option>
+                    </select>
+                    {touched.cardType && errors.cardType && (
+                      <div className="text-warning">{errors.cardType}</div>
+                    )}
+                  </div>
+
+                  {/* --- Card Inputs --- */}
+                  <FieldInputCardDetails
+                    name="cardholderName"
+                    label="Cardholder's Name"
+                    id="cardholderName"
+                    type="text"
+                    placeholder="Cardholder's Name"
+                  />
+
+                  <FieldInputCardDetails
+                    name="cardNumber"
+                    label="Card Number"
+                    id="cardNumber"
+                    type="text"
+                    placeholder="1234 5678 9012 3457"
+                  />
+
+                  <div className="row mb-4 text-start">
+                    <div className="col-md-6">
+                      <FieldInputCardDetails
+                        name="exp"
+                        label="Expiration"
+                        id="exp"
+                        type="text"
+                        placeholder="MM/YYYY"
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FieldInputCardDetails
+                        name="cvv"
+                        label="CVV"
+                        id="cvv"
+                        type="text"
+                        placeholder="●●●"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Quantity */}
+                  <div className="mb-3">
+                    <label htmlFor="quantity" className="form-label text-white">
+                      Quantity
+                    </label>
+                    <input
+                      id="quantity"
+                      name="quantity"
+                      type="number"
+                      className="form-control"
+                      min="1"
+                      value={values.quantity}
+                      onChange={handleChange}
+                    />
+                    {touched.quantity && errors.quantity && (
+                      <div className="text-warning">{errors.quantity}</div>
+                    )}
+                  </div>
+
+                  {/* Shipping Method */}
+                  <div className="mb-4">
+                    <label
+                      htmlFor="shippingMethod"
+                      className="form-label text-white"
+                    >
+                      Shipping Method
+                    </label>
+                    <select
+                      id="shippingMethod"
+                      name="shippingMethod"
+                      className="form-select"
+                      value={values.shippingMethod}
+                      onChange={handleChange}
+                    >
+                      <option value="standard">Standard ($10)</option>
+                      <option value="express">Express ($20)</option>
+                    </select>
+                    {touched.shippingMethod && errors.shippingMethod && (
+                      <div className="text-warning">
+                        {errors.shippingMethod}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Tính toán tổng */}
+                <hr className="my-4" />
+                <div className="d-flex justify-content-between">
+                  <p className="mb-2">Subtotal</p>
+                  <p className="mb-2">${subtotal.toFixed(2)}</p>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p className="mb-2">Shipping</p>
+                  <p className="mb-2">${shipping.toFixed(2)}</p>
+                </div>
+                <div className="d-flex justify-content-between mb-4">
+                  <p className="mb-2">Total (Incl. taxes)</p>
+                  <p className="mb-2">${total.toFixed(2)}</p>
+                </div>
+
+                <button type="submit" className="btn btn-info btn-block btn-lg">
+                  <div className="d-flex justify-content-between">
+                    <span>${total.toFixed(2)}</span>
+                    <span>
+                      Checkout{" "}
+                      <i className="fas fa-long-arrow-alt-right ms-2" />
+                    </span>
+                  </div>
+                </button>
+              </Form>
+            );
+          }}
+        </FormikWrapper>
       </div>
     </div>
   );
 }
 
-export default ProductDetail;
+export default CardDetails;

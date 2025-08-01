@@ -377,15 +377,6 @@ function CardDetails({ initialValues, validationSchema }) {
         <FormikWrapper
           initialValues={initialValues}
           validationSchema={validationSchema}
-          // onSubmit={onSubmit}
-          // onSubmit={(values) => {
-          //   const { total } = calculateOrderFromCart(
-          //     cartItems,
-          //     values.shippingMethod
-          //   );
-          //   console.log("Tổng:", total);
-          //   console.log("Giá trị form:", values);
-          // }}
           onSubmit={async (values, actions) => {
             const { total } = calculateOrderFromCart(
               cartItems,
@@ -398,15 +389,6 @@ function CardDetails({ initialValues, validationSchema }) {
               total,
               createdAt: new Date().toISOString(),
             };
-
-            // try {
-            //   await submitOrder(orderData);
-            //   toast.success("Đặt hàng thành công!");
-            //   actions.resetForm();
-            // } catch (error) {
-            //   toast.error("Đặt hàng thất bại!");
-            //   console.error(error);
-            // }
             try {
               await submitOrder(orderData);
               toast.success("✅ Đặt hàng thành công!");
@@ -420,7 +402,6 @@ function CardDetails({ initialValues, validationSchema }) {
           }}
         >
           {({ values, errors, touched, handleChange }) => {
-            // const { subtotal, shipping, total } = calculateOrderFromCart(values);
             const { subtotal, shipping, total } = calculateOrderFromCart(
               cartItems,
               values.shippingMethod
