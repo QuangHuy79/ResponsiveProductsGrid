@@ -15,7 +15,7 @@
 export async function registerUser(userData) {
   console.log("Gửi dữ liệu đăng ký:", userData);
 
-  const response = await fetch("http://localhost:3001/users", {
+  const response = await fetch("http://localhost:3002/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

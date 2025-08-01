@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 
-function AuthContainer() {
+function AuthContainer({ onClose }) {
   const [isLogin, setIsLogin] = useState(false);
 
   return (
     <div className="p-4 shadow rounded bg-white">
       {isLogin ? (
         <>
-          <LoginForm />
+          <LoginForm onClose={onClose} />
           <p className="mt-3 text-center">
             Chưa có tài khoản?{" "}
             <button
@@ -23,7 +23,7 @@ function AuthContainer() {
         </>
       ) : (
         <>
-          <RegisterForm />
+          <RegisterForm onClose={onClose} />
           <p className="mt-3 text-center">
             Đã có tài khoản?{" "}
             <button

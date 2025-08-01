@@ -9,7 +9,7 @@ function AuthOverlay({ isOpen, onClose }) {
     <div className="auth-overlay">
       <div className="auth-modal">
         <button className="btn btn-close float-end" onClick={onClose}></button>
-        <AuthContainer />
+        <AuthContainer onClose={onClose} />
       </div>
     </div>
   );

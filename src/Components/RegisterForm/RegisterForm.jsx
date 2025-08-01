@@ -2,10 +2,10 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FieldInput from "./FieldInput";
-// import { registerUser } from "../services/api";
+import { registerUser } from "../../api/api";
 import { toast } from "react-toastify";
 
-function RegisterForm() {
+function RegisterForm({ onClose }) {
   const initialValues = {
     username: "",
     email: "",
@@ -27,6 +27,7 @@ function RegisterForm() {
       await registerUser(values);
       toast.success("🎉 Đăng ký thành công!");
       resetForm();
+      if (onClose) onClose(); // ✅ Đóng form
     } catch (err) {
       console.error(err);
       toast.error("❌ Đăng ký thất bại!");
